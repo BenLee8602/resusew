@@ -1,39 +1,48 @@
 import json
 from bs4 import BeautifulSoup, Tag, NavigableString
+from nltk.tokenize import wordpunct_tokenize
 
 
-_target: str = ""
-_kw_cache: dict[str, int] = {}
+Tokens = tuple[str]
+
+class _State:
+    target: Tokens = ()
+    kw_cache: dict[str, int] = {}
 
 
 def _is_whitespace_node(node: Tag | NavigableString) -> bool:
     return isinstance(node, NavigableString) and node.strip() == ""
 
 
-def _get_node_score(keywords: list[str]) -> int:
-    global _kw_cache
-    score: int = 0
+def tokenize(s: str) -> Tokens:
+    return tuple(wordpunct_tokenize(s.lower()))
 
-    for kw in keywords:
-        kw = kw.lower()
-        if kw in _kw_cache:
-            score += _kw_cache[kw]
-            continue
 
-        s: int = _target.count(kw)
-        _kw_cache[kw] = s
-        score += s
+def _get_kw_score(kw: str) -> int:
+    if kw in _State.kw_cache:
+        return _State.kw_cache[kw]
+    kwt: Tokens = tokenize(kw)
 
-    return score
+    count: int = 0
+    i: int = 0
+    while i <= len(_State.target) - len(kwt):
+        for j in range(len(kwt)):
+            if kwt[j] != _State.target[i + j]:
+                i += 1
+                break
+            if j == len(kwt) - 1:
+                i += len(kwt)
+                count += 1
+    
+    _State.kw_cache[kw] = count
+    return count
 
 
 def run(resume: str, keywords: str, jobdesc: str) -> str:
-    global _target, _kw_cache
-
     soup: BeautifulSoup = BeautifulSoup(resume, "html.parser")
     keywords: dict = json.loads(keywords)
-    _target = jobdesc.lower()
-    _kw_cache = {}
+    _State.target = tokenize(jobdesc.lower())
+    _State.kw_cache = {}
 
     templates = soup.find_all(**{ "class": "resusew" })
     for t in templates:
@@ -41,10 +50,14 @@ def run(resume: str, keywords: str, jobdesc: str) -> str:
             lambda n: not _is_whitespace_node(n),
             t.children
         ))
-        kw: list[str] = keywords[t["id"]]
+        tkw: list[list[str]] = keywords[t["id"]]
 
         for i, n in enumerate(nodes):
-            n["data-resusew-score"] = _get_node_score(kw[i])
+            score: int = 0
+            nkw: list[str] = tkw[i]
+            for kw in nkw:
+                score += _get_kw_score(kw)
+            n["data-resusew-score"] = score
         nodes.sort(reverse=True, key=lambda n : n["data-resusew-score"])
 
         sel_count: int = int(t["data-resusew-count"])
