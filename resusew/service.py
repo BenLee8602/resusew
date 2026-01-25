@@ -38,6 +38,26 @@ def _get_kw_score(kw: str) -> int:
     return count
 
 
+def _resolve_template(t: Tag, kws: list[list[str]]) -> None:
+    nodes: list[Tag] = list(filter(
+        lambda n: not _is_whitespace_node(n),
+        t.children
+    ))
+
+    for i, n in enumerate(nodes):
+        score: int = 0
+        for kw in kws[i]:
+            score += _get_kw_score(kw)
+        n["data-resusew-score"] = score
+    nodes.sort(reverse=True, key=lambda n : n["data-resusew-score"])
+
+    sel_count: int = int(t["data-resusew-count"])
+    for i in range(min(sel_count, len(nodes))):
+        t.insert_before(nodes[i])
+
+    t.decompose()
+
+
 def run(resume: str, keywords: str, jobdesc: str) -> str:
     soup: BeautifulSoup = BeautifulSoup(resume, "html.parser")
     keywords: dict = json.loads(keywords)
@@ -46,25 +66,7 @@ def run(resume: str, keywords: str, jobdesc: str) -> str:
 
     templates = soup.find_all(**{ "class": "resusew" })
     for t in templates:
-        nodes: list[Tag] = list(filter(
-            lambda n: not _is_whitespace_node(n),
-            t.children
-        ))
-        tkw: list[list[str]] = keywords[t["id"]]
-
-        for i, n in enumerate(nodes):
-            score: int = 0
-            nkw: list[str] = tkw[i]
-            for kw in nkw:
-                score += _get_kw_score(kw)
-            n["data-resusew-score"] = score
-        nodes.sort(reverse=True, key=lambda n : n["data-resusew-score"])
-
-        sel_count: int = int(t["data-resusew-count"])
-        for i in range(min(sel_count, len(nodes))):
-            t.insert_before(nodes[i])
-
-        t.decompose()
+        _resolve_template(t, keywords[t["id"]])
 
     return soup.prettify()
 
