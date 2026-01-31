@@ -9,26 +9,23 @@ def load_required_file(filename: str) -> str:
         print(e)
         exit(1)
 
-if len(sys.argv) != 5:
+if len(sys.argv) != 4:
     print(
         "usage: py -m resusew "
-        "resume.html "
-        "keywords.json "
+        "resume.xyz.resusew "
         "jobdesc.txt "
-        "out.html"
+        "out.xyz"
     )
     exit(1)
 
 resume_file: str = sys.argv[1]
-keywords_file: str = sys.argv[2]
-jobdesc_file: str = sys.argv[3]
-out_file: str = sys.argv[4]
+jobdesc_file: str = sys.argv[2]
+out_file: str = sys.argv[3]
 
 resume: str = load_required_file(resume_file)
-keywords: str = load_required_file(keywords_file)
 jobdesc: str = load_required_file(jobdesc_file)
 
-out: str = resusew.run(resume, keywords, jobdesc)
+out: str = resusew.run(resume, jobdesc)
 
 try:
     with open(out_file, 'w') as f:
