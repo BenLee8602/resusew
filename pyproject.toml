@@ -1,0 +1,14 @@
+[project]
+name = "resusew"
+version = "0.1.0"
+dependencies = [
+    "click==8.3.1",
+    "joblib==1.5.3",
+    "nltk==3.9.2",
+    "regex==2026.1.15",
+    "tqdm==4.67.2",
+]
+
+[project.scripts]
+resusew = "resusew.cli:main"
+
