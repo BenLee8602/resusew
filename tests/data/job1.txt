@@ -1,0 +1,67 @@
+Backend Platform Engineer
+
+Company: Northbound Cloud Services
+Location: Toronto, ON (Hybrid – 2 days/week in office)
+Compensation: CAD $120,000 – $150,000 base + bonus + equity
+Employment Type: Full-time
+
+Who We Are
+
+Northbound Cloud Services builds scalable infrastructure tools used by mid-sized SaaS companies across North America. Our platform helps teams deploy, monitor, and operate distributed systems without needing a dedicated SRE team. We’re engineers at heart, and we care deeply about reliability, simplicity, and clean system design.
+
+Job Summary
+
+We’re looking for a Backend Platform Engineer to help design and evolve the core services that power our cloud platform. You’ll work on high-throughput APIs, distributed systems, and internal tooling used by both customers and fellow engineers.
+
+Responsibilities
+
+Design and implement backend services in a microservices environment
+
+Build and maintain REST and gRPC APIs with a focus on performance and reliability
+
+Work with distributed data stores and caching layers
+
+Improve system observability, monitoring, and alerting
+
+Collaborate with frontend, infrastructure, and product teams
+
+Participate in architecture reviews and technical decision-making
+
+Contribute to on-call rotation and incident response
+
+Required Skills & Experience
+
+3+ years of professional backend software development experience
+
+Strong proficiency in at least one backend language (Go, Java, Python, or C++)
+
+Experience with SQL databases and data modeling
+
+Familiarity with distributed systems concepts
+
+Experience with Docker and containerized deployments
+
+Solid understanding of networking fundamentals
+
+Nice to Have
+
+Experience with Kubernetes or cloud-native architectures
+
+Exposure to event-driven systems or message queues
+
+Background in performance optimization or systems programming
+
+Benefits
+
+Competitive salary and annual performance bonus
+
+Stock options
+
+Extended health, dental, and vision coverage
+
+Flexible work hours and hybrid work model
+
+Learning budget for courses, conferences, and books
+
+4 weeks paid vacation + company-wide shutdown in December
+

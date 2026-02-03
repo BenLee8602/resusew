@@ -1,0 +1,95 @@
+Spongebob Squarepants
+spongebob.squarepants@mail.com | 123-456-7890 | GitHub | LinkedIn
+
+Skills:
+
+Languages:
+Python
+JavaScript
+TypeScript
+C
+C++
+C#
+Java
+Go
+Rust
+Ruby
+
+Frameworks:
+PyTorch
+TensorFlow
+Scikit-learn
+React
+React Native
+Next.js
+Vue.js
+Angular
+Svelte
+Node.js
+
+Other:
+AWS
+GCP
+Azure
+Make
+Git
+GitHub
+GitLab
+Bitbucket
+SQL
+PostgreSQL
+
+Experience
+
+Senior Software Engineer
+Northstar Systems | Jan 2022 - Present | Toronto, ON
+- Designed and implemented scalable backend services using Node.js, Go, and Python
+- Collaborated closely with product managers and designers to refine requirements
+- Led architecture discussions for migrating a monolithic application to microservices
+- Built and maintained REST and GraphQL APIs consumed by web and mobile clients
+- Implemented CI/CD pipelines with Docker, GitHub Actions, and Kubernetes
+
+Software Engineer
+BlueRiver Technologies | May 2019 - Dec 2021 | Waterloo, ON
+- Worked with cloud infrastructure on AWS (EC2, S3, RDS, Lambda)
+- Developed full-stack web applications using React, TypeScript, and Django
+- Built reusable UI components and internal design systems
+- Implemented authentication and authorization using OAuth2 and JWT
+- Wrote comprehensive unit and integration tests with Jest and PyTest
+
+Junior Software Developer
+Vertex Solutions | Jun 2017 - Apr 2019 | Mississauga, ON
+- Wrote internal tooling and automation scripts in Python and Bash
+- Implemented performance-critical components with careful memory management
+- Contributed to enterprise desktop applications using C++ and Qt
+- Assisted with database schema design and SQL query optimization
+- Debugged and resolved issues across Windows and Linux environments
+
+Projects
+
+Machine Learning Experiment Platform
+- Built a platform for running ML experiments using Python
+- Integrated PyTorch and TensorFlow training pipelines
+- Focused on reproducibility and automation
+
+Embedded IoT Sensor Network
+- Designed a cloud dashboard for real-time monitoring
+- Built a gateway service in Python for data aggregation
+- Focused on reliability, fault tolerance, and OTA updates
+
+Mobile Fitness Tracker
+- Added charts and analytics using custom data visualizations
+- Built a backend API using FastAPI and PostgreSQL
+- Developed a cross-platform mobile app using React Native
+
+Education
+Bachelor of Science in Computer Science
+Maple Valley University | 2013 - 2017
+- GPA: 3.8 / 4.0
+- Relevant Coursework:
+    Machine Learning
+    Data Structures and Algorithms
+    Operating Systems
+    Computer Networks
+    Databases and Information Systems
+

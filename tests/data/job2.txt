@@ -1,0 +1,65 @@
+Embedded Software Engineer (IoT Systems)
+
+Company: Aurora Embedded Technologies
+Location: Kitchener, ON (On-site)
+Compensation: CAD $95,000 – $125,000
+Employment Type: Full-time
+
+Who We Are
+
+Aurora Embedded Technologies designs and manufactures connected hardware for environmental monitoring, smart infrastructure, and industrial automation. Our devices operate in the real world — harsh conditions, limited power, and strict reliability requirements. We build systems that engineers trust when failure is not an option.
+
+Job Summary
+
+We’re seeking an Embedded Software Engineer to work on firmware and low-level systems for our next generation of IoT devices. You’ll work close to the hardware and collaborate with electrical, mechanical, and cloud teams to deliver robust end-to-end solutions.
+
+Responsibilities
+
+Develop firmware in C/C++ for microcontrollers and embedded Linux systems
+
+Interface with sensors, communication modules, and peripherals
+
+Implement communication protocols (MQTT, SPI, I2C, UART, CAN)
+
+Optimize code for memory usage, performance, and power efficiency
+
+Debug hardware/software issues using oscilloscopes, logic analyzers, and JTAG
+
+Contribute to system architecture and hardware bring-up
+
+Write technical documentation and test procedures
+
+Required Skills & Experience
+
+2+ years of embedded software development experience
+
+Strong proficiency in C or C++
+
+Experience working with microcontrollers (ARM Cortex-M, ESP32, etc.)
+
+Familiarity with real-time or resource-constrained environments
+
+Understanding of low-level debugging and hardware interaction
+
+Nice to Have
+
+Experience with embedded Linux or Yocto
+
+Knowledge of wireless protocols (BLE, LoRa, Wi-Fi)
+
+Exposure to OTA updates and secure bootloaders
+
+Benefits
+
+Competitive salary
+
+Health and dental benefits
+
+RRSP matching program
+
+Relocation assistance (if applicable)
+
+Hands-on access to labs and hardware
+
+Tight-knit engineering team with real ownership
+

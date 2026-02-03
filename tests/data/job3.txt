@@ -1,0 +1,75 @@
+Applied Machine Learning Engineer
+
+Company: InsightForge Analytics
+Location: Remote (Canada-wide)
+Compensation: CAD $130,000 – $165,000 base + equity
+Employment Type: Full-time
+
+Who We Are
+
+InsightForge Analytics builds data-driven products that help organizations make better decisions at scale. We focus on turning messy, real-world data into practical insights using machine learning, not academic benchmarks. Our customers span finance, logistics, and healthcare.
+
+Job Summary
+
+We’re looking for an Applied Machine Learning Engineer to develop, deploy, and maintain ML models in production. This role sits at the intersection of data science and software engineering, with a strong emphasis on real-world impact and system reliability.
+
+Responsibilities
+
+Develop and train machine learning models for production use cases
+
+Work with large datasets to extract features and insights
+
+Deploy models as scalable services and APIs
+
+Monitor model performance and data drift in production
+
+Collaborate with product and backend teams to integrate ML solutions
+
+Improve ML pipelines for automation and reproducibility
+
+Communicate results and tradeoffs to technical and non-technical stakeholders
+
+Required Skills & Experience
+
+3+ years of experience in machine learning or applied data science
+
+Strong Python skills
+
+Experience with ML frameworks such as PyTorch, TensorFlow, or scikit-learn
+
+Solid understanding of statistics and model evaluation
+
+Experience deploying models to production environments
+
+Nice to Have
+
+Experience with MLOps tooling and model monitoring
+
+Familiarity with cloud platforms (AWS, GCP, or Azure)
+
+Experience working with time-series or unstructured data
+
+Benefits
+
+Fully remote work within Canada
+
+Competitive salary and equity package
+
+Comprehensive health and wellness benefits
+
+Home office stipend
+
+Annual learning and conference budget
+
+Flexible vacation policy
+
+If you want, I can also:
+
+Generate badly written or biased postings for testing filters
+
+Produce junior / intern / staff-level variants
+
+Create postings optimized (or intentionally not optimized) for ATS
+
+Export these as JSON objects or structured test fixtures
+

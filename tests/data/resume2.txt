@@ -1,0 +1,95 @@
+Spongebob Squarepants
+spongebob.squarepants@mail.com | 123-456-7890 | GitHub | LinkedIn
+
+Skills:
+
+Languages:
+C
+C++
+JavaScript
+TypeScript
+Python
+C#
+Java
+Go
+Rust
+Ruby
+
+Frameworks:
+React
+React Native
+Next.js
+Vue.js
+Angular
+Svelte
+Node.js
+Express
+Fastify
+NestJS
+
+Other:
+Linux
+Git
+GitHub
+GitLab
+Bitbucket
+SQL
+PostgreSQL
+MySQL
+SQLite
+MongoDB
+
+Experience
+
+Senior Software Engineer
+Northstar Systems | Jan 2022 - Present | Toronto, ON
+- Led architecture discussions for migrating a monolithic application to microservices
+- Collaborated closely with product managers and designers to refine requirements
+- Designed and implemented scalable backend services using Node.js, Go, and Python
+- Built and maintained REST and GraphQL APIs consumed by web and mobile clients
+- Implemented CI/CD pipelines with Docker, GitHub Actions, and Kubernetes
+
+Software Engineer
+BlueRiver Technologies | May 2019 - Dec 2021 | Waterloo, ON
+- Worked with cloud infrastructure on AWS (EC2, S3, RDS, Lambda)
+- Developed full-stack web applications using React, TypeScript, and Django
+- Built reusable UI components and internal design systems
+- Implemented authentication and authorization using OAuth2 and JWT
+- Wrote comprehensive unit and integration tests with Jest and PyTest
+
+Junior Software Developer
+Vertex Solutions | Jun 2017 - Apr 2019 | Mississauga, ON
+- Contributed to enterprise desktop applications using C++ and Qt
+- Implemented performance-critical components with careful memory management
+- Debugged and resolved issues across Windows and Linux environments
+- Wrote internal tooling and automation scripts in Python and Bash
+- Documented APIs, build systems, and deployment procedures
+
+Projects
+
+Embedded IoT Sensor Network
+- Programmed microcontrollers in C and C++ for environmental sensing
+- Implemented low-power communication over MQTT
+- Designed a cloud dashboard for real-time monitoring
+
+3D Software Renderer
+- Implemented a CPU-based 3D renderer from scratch in C++
+- Benchmarked and optimized performance-critical code paths
+- Wrote a custom math library for vectors, matrices, and transforms
+
+Cloud-Based Log Aggregation System
+- Designed a centralized logging architecture using UDP and TCP
+- Deployed on AWS with autoscaling and monitoring
+- Implemented a log ingestion server in Go
+
+Education
+Bachelor of Science in Computer Science
+Maple Valley University | 2013 - 2017
+- GPA: 3.8 / 4.0
+- Relevant Coursework:
+    Databases and Information Systems
+    Software Engineering
+    Data Structures and Algorithms
+    Operating Systems
+    Computer Networks
+
