@@ -7,11 +7,10 @@ for a given job description!
 the main problem resusew aims to solve is space. you may find
 that all your skills and experience cant fit on one page, which
 isnt ideal. if you include everything, then your resume becomes
-diluted by irrelevant content. even if everything fits, you
+bloated by irrelevant content. even if everything fits, you
 want your most relevant skills and experience to appear first.
 resusew solves both of these issues by putting the most relevant
-content first, and omitting everything else, such that
-everything fits on a single page
+content first, and omitting everything else
 
 resusew also provides some advantages over ai tailoring tools:
 - ai-generated content isnt perfect, and generally requires
@@ -92,8 +91,38 @@ Personal Project |
 here is a snippet from our resume, showing one of our personal
 projects. the problem is that its too long! we have other
 projects on our resume, not to mention our skills, experience,
-and education sections. our resume ends up being more than one
-page, which isnt ideal. we can use resusew to fix this
+and education sections. our resume ends up being bloated with
+irrelevant content, and longer than one page, which isnt ideal.
+we need to trim down this list by discarding the less relevant
+bullets, and keeping the important ones. we can do this using
+a template, which tells resusew which parts of the document it
+is allowed to rearrange or remove
+
+### templates and items
+
+to instruct resusew on how to tailor our resume, we must define
+**templates**. a template is a list of **items**, where an item
+is just some block of content from the original resume. in the
+above example, we will convert the bullet list into a template,
+where each bullet in the list is an item
+
+when you run resusew and it encounters a template, it takes the
+following steps to resolve the template, leaving only the
+final, tailored content for your current job description
+1. it starts by assigning a score to each item in the template.
+an items score measures how relevant it is to the current job
+description, based on keywords you provide
+1. next, resusew sorts the items in the template based on their
+score, leaving the most relevant items at the top
+1. finally, resusew deletes the least relevant items from the
+bottom of the template, until you are only left with your
+desired amount of items
+
+note: resusew doesnt modify any content outside of templates.
+within templates, resusew only rearranges and/or omits your
+original content
+
+### macros
 
 ```diff
 \textbf{Distributed Chat Platform}
@@ -118,13 +147,12 @@ Personal Project |
 +__RESUSEW_END__ 3
 \end{itemize}
 ```
-now we have added some new lines to our project. each of these
-new lines starts with a macro, such as `__RESUSEW_BEG__`.
-together, these macros form a template, which resusew uses to
-tailor your resume. lets take a look at what each of these
-macros mean
 
-### macros and templates
+heres what our project bullet list looks like after converting
+it into a template. templates are built using **macros**, such
+as `__RESUSEW_BEG__`. each of these macros must be placed at
+the start of their own line. lets take a look at what each of
+these macros mean
 
 ```
 __RESUSEW_BEG__ real-time,websockets,node
@@ -137,32 +165,30 @@ about that for now
 ```
 __RESUSEW_ITEM__ react,frontend,ui
 ```
-next lets look at `__RESUSEW_ITEM__`. each resusew template
-contains several items, where an item is just a snippet of your
-original resume content. for this example, each item is a
-bullet point that describes our project. the `__RESUSEW_ITEM__`
-macro marks the end of one item, and the start of a new one,
-similar to a comma in a list
+next lets look at `__RESUSEW_ITEM__`. this macro is used to
+separate the items in our template, similar to how a comma
+separates items in a list. to be precise, an item consists of
+all the lines between any two macros in a template. in our
+example, each item is only one line, but items can span
+multiple lines if needed
 
 the remainder of the text we see is a comma-separated list of
-keywords, for the item that follows. note that the first item
-in our template doesnt have a `__RESUSEW_ITEM__` macro before
-it, so instead we put our keywords with `__RESUSEW_BEG__`.
-resusew scans the job description for each of these keywords,
-and assigns a score to the item, based on how well they match
+keywords, for the item that follows. these keywords are what
+resusew uses to assign a score to the item, by scanning the job
+description for each keyword
 
-note: do **not** put `__RESUSEW_ITEM__` immediately following
-`__RESUSEW_BEG__`
+note that the first item in our template doesnt have a
+`__RESUSEW_ITEM__` macro before it, so instead we put our
+keywords with `__RESUSEW_BEG__`. do **not** put
+`__RESUSEW_ITEM__` immediately following `__RESUSEW_BEG__`
 
 ```
 __RESUSEW_END__ 3
 ```
 our final macro is `__RESUSEW_END__`, which simply marks the
 end of the current template. the number that follows is how
-many items we want resusew to select from the template. resusew
-will calculate a score for each item based on its keywords, and
-only keep the top scoring items, while omitting the rest. in
-our example here, resusew will only keep the top 3 items
+many items we want resusew to keep from the template. in our
+example here, resusew will only keep the 3 top scoring items
 
 ### nested templates
 
