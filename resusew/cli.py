@@ -1,5 +1,5 @@
 import sys
-import resusew
+from resusew import Parser, Job, Resusew
 
 def load_required_file(filename: str) -> str:
     try:
@@ -23,10 +23,14 @@ def main():
     jobdesc_file: str = sys.argv[2]
     out_file: str = sys.argv[3]
 
-    resume: str = load_required_file(resume_file)
-    jobdesc: str = load_required_file(jobdesc_file)
+    resume_str: str = load_required_file(resume_file)
+    jobdesc_str: str = load_required_file(jobdesc_file)
 
-    out: str = resusew.run(resume, jobdesc)
+    resume: Resusew = Parser().parse(resume_str.split('\n'))
+    jobdesc: Job = Job(jobdesc_str)
+
+    resume.resolve(jobdesc)
+    out = '\n'.join(resume.to_plain_str())
 
     try:
         with open(out_file, 'w') as f:

@@ -77,10 +77,10 @@ Mobile Fitness Tracker
 - Developed a cross-platform mobile app using React Native
 - Integrated device sensors for step counting and activity tracking
 
-Cloud-Based Log Aggregation System
-- Designed a centralized logging architecture using UDP and TCP
-- Implemented a log ingestion server in Go
-- Deployed on AWS with autoscaling and monitoring
+Distributed Chat Platform
+- Deployed the system to Kubernetes with automated CI/CD
+- Implemented horizontal scaling with Redis pub/sub and Docker
+- Created a React frontend with optimistic UI updates
 
 Education
 Bachelor of Science in Computer Science
