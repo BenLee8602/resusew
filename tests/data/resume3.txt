@@ -52,10 +52,10 @@ Northstar Systems | Jan 2022 - Present | Toronto, ON
 Software Engineer
 BlueRiver Technologies | May 2019 - Dec 2021 | Waterloo, ON
 - Worked with cloud infrastructure on AWS (EC2, S3, RDS, Lambda)
+- Wrote comprehensive unit and integration tests with Jest and PyTest
 - Developed full-stack web applications using React, TypeScript, and Django
 - Built reusable UI components and internal design systems
 - Implemented authentication and authorization using OAuth2 and JWT
-- Wrote comprehensive unit and integration tests with Jest and PyTest
 
 Junior Software Developer
 Vertex Solutions | Jun 2017 - Apr 2019 | Mississauga, ON
@@ -88,8 +88,8 @@ Maple Valley University | 2013 - 2017
 - GPA: 3.8 / 4.0
 - Relevant Coursework:
     Machine Learning
+    Databases and Information Systems
     Data Structures and Algorithms
     Operating Systems
     Computer Networks
-    Databases and Information Systems
 

@@ -51,11 +51,11 @@ Northstar Systems | Jan 2022 - Present | Toronto, ON
 
 Software Engineer
 BlueRiver Technologies | May 2019 - Dec 2021 | Waterloo, ON
+- Wrote comprehensive unit and integration tests with Jest and PyTest
 - Worked with cloud infrastructure on AWS (EC2, S3, RDS, Lambda)
 - Developed full-stack web applications using React, TypeScript, and Django
 - Built reusable UI components and internal design systems
 - Implemented authentication and authorization using OAuth2 and JWT
-- Wrote comprehensive unit and integration tests with Jest and PyTest
 
 Junior Software Developer
 Vertex Solutions | Jun 2017 - Apr 2019 | Mississauga, ON

@@ -44,8 +44,8 @@ Experience
 Senior Software Engineer
 Northstar Systems | Jan 2022 - Present | Toronto, ON
 - Designed and implemented scalable backend services using Node.js, Go, and Python
-- Implemented CI/CD pipelines with Docker, GitHub Actions, and Kubernetes
 - Led architecture discussions for migrating a monolithic application to microservices
+- Implemented CI/CD pipelines with Docker, GitHub Actions, and Kubernetes
 - Built and maintained REST and GraphQL APIs consumed by web and mobile clients
 - Collaborated closely with product managers and designers to refine requirements
 
@@ -62,8 +62,8 @@ Vertex Solutions | Jun 2017 - Apr 2019 | Mississauga, ON
 - Implemented performance-critical components with careful memory management
 - Assisted with database schema design and SQL query optimization
 - Wrote internal tooling and automation scripts in Python and Bash
+- Documented APIs, build systems, and deployment procedures
 - Contributed to enterprise desktop applications using C++ and Qt
-- Debugged and resolved issues across Windows and Linux environments
 
 Projects
 

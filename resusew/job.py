@@ -1,6 +1,22 @@
+import nltk
 from nltk.tokenize import wordpunct_tokenize
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+
+def _dl_nltk_data(resource_path: str, resource_name: str):
+    try:
+        nltk.data.find(resource_path)
+    except LookupError:
+        nltk.download(resource_name)
+
+_dl_nltk_data("corpora/stopwords", "stopwords")
+_dl_nltk_data("corpora/wordnet.zip", "wordnet")
+
 
 class Job:
+    __stop_words: set[str] = set(stopwords.words("english"))
+    __lemmatizer: WordNetLemmatizer = WordNetLemmatizer()
+
     def __init__(self, jobdesc: str):
         self.jobdesc: list[str] = self.__tokenize(jobdesc)
         self.kw_cache: dict[str, int] = {}
@@ -41,5 +57,9 @@ class Job:
 
 
     def __tokenize(self, s: str) -> list[str]:
-        return wordpunct_tokenize(s.lower())
+        s = s.lower()
+        tokens: list[str] = wordpunct_tokenize(s)
+        tokens = [t for t in tokens if t not in Job.__stop_words]
+        tokens = [Job.__lemmatizer.lemmatize(t) for t in tokens]
+        return tokens
 
