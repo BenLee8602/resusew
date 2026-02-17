@@ -14,8 +14,11 @@ _dl_nltk_data("corpora/wordnet.zip", "wordnet")
 
 
 class Job:
-    __stop_words: set[str] = set(stopwords.words("english"))
-    __lemmatizer: WordNetLemmatizer = WordNetLemmatizer()
+    __PUNCT: set[str] = set(",:;-'./\\?!_|\"()[]{}")
+    __STOPWORDS: set[str] = set(stopwords.words("english"))
+
+    __BAD_TOKENS: set[str] = __PUNCT | __STOPWORDS
+    __LEMMATIZER: WordNetLemmatizer = WordNetLemmatizer()
 
     def __init__(self, jobdesc: str):
         self.jobdesc: list[str] = self.__tokenize(jobdesc)
@@ -59,7 +62,7 @@ class Job:
     def __tokenize(self, s: str) -> list[str]:
         s = s.lower()
         tokens: list[str] = wordpunct_tokenize(s)
-        tokens = [t for t in tokens if t not in Job.__stop_words]
-        tokens = [Job.__lemmatizer.lemmatize(t) for t in tokens]
+        tokens = [t for t in tokens if t not in Job.__BAD_TOKENS]
+        tokens = [Job.__LEMMATIZER.lemmatize(t) for t in tokens]
         return tokens
 
