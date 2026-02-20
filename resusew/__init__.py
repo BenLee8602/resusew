@@ -1,3 +1,4 @@
+from resusew.trie import TokenTrie
 import resusew.macro
 from resusew.job import Job
 from resusew.resusew import Resusew
@@ -7,6 +8,7 @@ from resusew.template import Template
 from resusew.parser import Parser
 
 __all__ = [
+    "TokenTrie"
     "macro",
     "Job",
     "Resusew",
