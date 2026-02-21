@@ -3,6 +3,10 @@ from resusew import Job
 
 class Resusew(ABC):
     @abstractmethod
+    def get_keywords(self) -> set[str]:
+        pass
+
+    @abstractmethod
     def resolve(self, job: Job) -> None:
         pass
 

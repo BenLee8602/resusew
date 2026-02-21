@@ -3,6 +3,9 @@ from nltk.tokenize import wordpunct_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
+from resusew import TokenTrie
+
+
 def _dl_nltk_data(resource_path: str, resource_name: str):
     try:
         nltk.data.find(resource_path)
@@ -20,10 +23,24 @@ class Job:
     __BAD_TOKENS: set[str] = __PUNCT | __STOPWORDS
     __LEMMATIZER: WordNetLemmatizer = WordNetLemmatizer()
 
-    def __init__(self, jobdesc: str):
-        self.jobdesc: list[str] = self.__tokenize(jobdesc)
-        self.kw_cache: dict[str, int] = {}
+    def __init__(self, jobdesc: str, keywords: set[str]):
         self.itemkw_stack: list[set[str]] = []
+        self.scores: dict[tuple[str], int] = {}
+
+        job: list[str] = self.__tokenize(jobdesc)
+
+        keyword_trie: TokenTrie = TokenTrie()
+        for kw in keywords:
+            keyword_trie.insert(self.__tokenize(kw))
+
+        while job:
+            nodes: list[TokenTrie] = keyword_trie.nav(job)[1:]
+            while nodes and not nodes[-1].end:
+                nodes.pop()
+            if nodes:
+                kw: tuple[str] = tuple(job[:len(nodes)])
+                self.scores[kw] = self.scores.get(kw, 0) + 1
+            del job[:max(1, len(nodes))]
 
 
     def push(self, itemkw: set[str]) -> None:
@@ -37,26 +54,7 @@ class Job:
 
 
     def get_kw_score(self, kw: str) -> int:
-        if len(kw) == 0:
-            return 0
-
-        if kw in self.kw_cache:
-            return self.kw_cache[kw]
-        kwt: list[str] = self.__tokenize(kw)
-
-        count: int = 0
-        i: int = 0
-        while i <= len(self.jobdesc) - len(kwt):
-            for j in range(len(kwt)):
-                if kwt[j] != self.jobdesc[i + j]:
-                    i += 1
-                    break
-                if j == len(kwt) - 1:
-                    i += len(kwt)
-                    count += 1
-        
-        self.kw_cache[kw] = count
-        return count
+        return self.scores.get(tuple(self.__tokenize(kw)), 0)
 
 
     def __tokenize(self, s: str) -> list[str]:

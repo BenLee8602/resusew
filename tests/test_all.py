@@ -13,7 +13,7 @@ def load_test_data(filename: str) -> str:
         assert False
 
 
-def test_all():
+def test_all() -> None:
     parser: Parser = Parser()
     resume_text: list[str] = load_test_data("resume.txt.resusew").split('\n')
     resume: Resusew = parser.parse(resume_text)
@@ -22,7 +22,7 @@ def test_all():
         resume_cur: Resusew = deepcopy(resume)
 
         job_text: str = load_test_data(f"job{i + 1}.txt")
-        job: Job = Job(job_text)
+        job: Job = Job(job_text, resume.get_keywords())
 
         resume_cur.resolve(job)
 

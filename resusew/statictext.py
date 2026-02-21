@@ -4,6 +4,9 @@ class StaticText(Resusew):
     def __init__(self, text: list[str]):
         self.text = text
 
+    def get_keywords(self) -> set[str]:
+        return set()
+
     def resolve(self, job: Job) -> None:
         pass
 

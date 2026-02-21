@@ -5,6 +5,12 @@ class Item(Resusew):
         self.keywords: set[str] = keywords
         self.content: list[Resusew] = content
 
+    def get_keywords(self) -> set[str]:
+        keywords: set[str] = set(self.keywords)
+        for c in self.content:
+            keywords.update(c.get_keywords())
+        return keywords
+
     def resolve(self, job: Job) -> int:
         job.push(self.keywords)
         for c in self.content:

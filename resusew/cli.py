@@ -27,7 +27,7 @@ def main():
     jobdesc_str: str = load_required_file(jobdesc_file)
 
     resume: Resusew = Parser().parse(resume_str.split('\n'))
-    jobdesc: Job = Job(jobdesc_str)
+    jobdesc: Job = Job(jobdesc_str, resume.get_keywords())
 
     resume.resolve(jobdesc)
     out = '\n'.join(resume.to_plain_str())

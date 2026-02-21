@@ -6,6 +6,13 @@ class Template(Resusew):
         self.max_items = max_items
 
 
+    def get_keywords(self) -> set[str]:
+        keywords: set[str] = set()
+        for i in self.items:
+            keywords.update(i.get_keywords())
+        return keywords
+
+
     def resolve(self, job: Job) -> None:
         scores: list[int] = []
         for i in self.items:
