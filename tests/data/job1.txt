@@ -11,7 +11,7 @@ Northbound Cloud Services builds scalable infrastructure tools used by mid-sized
 
 Job Summary
 
-We’re looking for a Backend Platform Engineer to help design and evolve the core services that power our cloud platform. You’ll work on high-throughput APIs, distributed systems, and internal tooling used by both customers and fellow engineers.
+We’re looking for a Back-end Platform Engineer to help design and evolve the core services that power our cloud platform. You’ll work on high-throughput APIs, distributed systems, and internal tooling used by both customers and fellow engineers.
 
 Responsibilities
 
@@ -23,7 +23,7 @@ Work with distributed data stores and caching layers
 
 Improve system observability, monitoring, and alerting
 
-Collaborate with frontend, infrastructure, and product teams
+Collaborate with front-end, infrastructure, and product teams
 
 Participate in architecture reviews and technical decision-making
 
@@ -31,7 +31,7 @@ Contribute to on-call rotation and incident response
 
 Required Skills & Experience
 
-3+ years of professional backend software development experience
+3+ years of professional back-end software development experience
 
 Strong proficiency in at least one backend language (Go, Java, Python, or C++)
 

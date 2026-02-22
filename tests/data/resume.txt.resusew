@@ -302,11 +302,11 @@ __RESUSEW_END__ 5
 
 Software Engineer
 BlueRiver Technologies | May 2019 - Dec 2021 | Waterloo, ON
-__RESUSEW_BEG__ full-stack,react,typescript,django
+__RESUSEW_BEG__ fullstack,react,typescript,django
 - Developed full-stack web applications using React, TypeScript, and Django
 __RESUSEW_ITEM__ ui
 - Built reusable UI components and internal design systems
-__RESUSEW_ITEM__ authentication,authorization,oauth2,jwt
+__RESUSEW_ITEM__ auth,oauth2,jwt
 - Implemented authentication and authorization using OAuth2 and JWT
 __RESUSEW_ITEM__ unit,integration,tests,jest,pytest
 - Wrote comprehensive unit and integration tests with Jest and PyTest

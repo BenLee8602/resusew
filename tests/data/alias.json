@@ -1,0 +1,10 @@
+{
+    "fullstack": ["full-stack"],
+    "frontend": ["front-end"],
+    "backend": ["back-end"],
+    "rest": ["restful", "restapi", "rest-api", "restful-api"],
+    "postgres": ["postgresql"],
+    "react": ["reactjs"],
+    "auth": ["authentication", "authorization"]
+}
+

@@ -23,11 +23,38 @@ class Job:
     __BAD_TOKENS: set[str] = __PUNCT | __STOPWORDS
     __LEMMATIZER: WordNetLemmatizer = WordNetLemmatizer()
 
-    def __init__(self, jobdesc: str, keywords: set[str]):
+
+    def __init__(self,
+                 jobdesc: str,
+                 keywords: set[str],
+                 aliases: dict[str, list[str]]):
+
         self.itemkw_stack: list[set[str]] = []
         self.scores: dict[tuple[str], int] = {}
 
         job: list[str] = self.__tokenize(jobdesc)
+
+        alias_tokens: dict[tuple[str], list[str]] = {}
+        alias_trie: TokenTrie = TokenTrie()
+        for key, val in aliases.items():
+            kt: list[str] = self.__tokenize(key)
+            for v in val:
+                vt: list[str] = self.__tokenize(v)
+                alias_trie.insert(vt)
+                alias_tokens[tuple(vt)] = kt
+
+        new_job: list[str] = []
+        while job:
+            nodes: list[TokenTrie] = alias_trie.nav(job)[1:]
+            while nodes and not nodes[-1].end:
+                nodes.pop()
+            if not nodes:
+                new_job.append(job.pop(0))
+                continue
+            kw: tuple[str] = tuple(job[:len(nodes)])
+            new_job += alias_tokens[kw]
+            del job[:len(nodes)]
+        job = new_job
 
         keyword_trie: TokenTrie = TokenTrie()
         for kw in keywords:

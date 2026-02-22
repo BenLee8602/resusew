@@ -1,4 +1,5 @@
 import pytest
+import json
 from copy import deepcopy
 from resusew import Parser, Job, Resusew
 
@@ -18,11 +19,14 @@ def test_all() -> None:
     resume_text: list[str] = load_test_data("resume.txt.resusew").split('\n')
     resume: Resusew = parser.parse(resume_text)
 
+    aliases: dict[str, list[str]] = json.loads(
+        load_test_data("alias.json"))
+
     for i in range(3):
         resume_cur: Resusew = deepcopy(resume)
 
         job_text: str = load_test_data(f"job{i + 1}.txt")
-        job: Job = Job(job_text, resume.get_keywords())
+        job: Job = Job(job_text, resume.get_keywords(), aliases)
 
         resume_cur.resolve(job)
 
