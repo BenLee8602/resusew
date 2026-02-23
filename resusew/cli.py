@@ -1,7 +1,8 @@
-import sys
+import json
+from argparse import ArgumentParser
 from resusew import Parser, Job, Resusew
 
-def load_required_file(filename: str) -> str:
+def _load_required_file(filename: str) -> str:
     try:
         with open(filename) as f:
             return f.read()
@@ -10,30 +11,36 @@ def load_required_file(filename: str) -> str:
         exit(1)
 
 def main():
-    if len(sys.argv) != 4:
-        print(
-            "usage: resusew "
-            "resume.xyz.resusew "
-            "jobdesc.txt "
-            "out.xyz"
-        )
-        exit(1)
+    parser: ArgumentParser = ArgumentParser()
+    parser.add_argument(
+            "resume",
+            help="your resusew template file")
+    parser.add_argument(
+            "jobdesc",
+            help="job description file")
+    parser.add_argument(
+            "out",
+            help="tailored resume output file")
+    parser.add_argument(
+            "-a",
+            "--alias",
+            help="your keyword alias dict file")
+    args = parser.parse_args()
 
-    resume_file: str = sys.argv[1]
-    jobdesc_file: str = sys.argv[2]
-    out_file: str = sys.argv[3]
+    resume_str: str = _load_required_file(args.resume)
+    jobdesc_str: str = _load_required_file(args.jobdesc)
 
-    resume_str: str = load_required_file(resume_file)
-    jobdesc_str: str = load_required_file(jobdesc_file)
+    aliases: dict[str, list[str]] = json.loads(
+            _load_required_file(args.alias)) if args.alias else {}
 
     resume: Resusew = Parser().parse(resume_str.split('\n'))
-    jobdesc: Job = Job(jobdesc_str, resume.get_keywords())
+    jobdesc: Job = Job(jobdesc_str, resume.get_keywords(), aliases)
 
     resume.resolve(jobdesc)
     out = '\n'.join(resume.to_plain_str())
 
     try:
-        with open(out_file, 'w') as f:
+        with open(args.out, 'w') as f:
             f.write(out)
     except Exception as e:
         print(e)
