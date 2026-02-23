@@ -34,29 +34,14 @@ class Job:
 
         job: list[str] = self.__tokenize(jobdesc)
 
-        alias_tokens: dict[tuple[str], list[str]] = {}
-        alias_trie: TokenTrie = TokenTrie()
+        keyword_trie: TokenTrie = TokenTrie()
+        alias_map: dict[tuple[str], tuple[str]] = {}
         for key, val in aliases.items():
-            kt: list[str] = self.__tokenize(key)
+            kt: tuple[str] = tuple(self.__tokenize(key))
             for v in val:
                 vt: list[str] = self.__tokenize(v)
-                alias_trie.insert(vt)
-                alias_tokens[tuple(vt)] = kt
-
-        new_job: list[str] = []
-        while job:
-            nodes: list[TokenTrie] = alias_trie.nav(job)[1:]
-            while nodes and not nodes[-1].end:
-                nodes.pop()
-            if not nodes:
-                new_job.append(job.pop(0))
-                continue
-            kw: tuple[str] = tuple(job[:len(nodes)])
-            new_job += alias_tokens[kw]
-            del job[:len(nodes)]
-        job = new_job
-
-        keyword_trie: TokenTrie = TokenTrie()
+                keyword_trie.insert(vt)
+                alias_map[tuple(vt)] = kt
         for kw in keywords:
             keyword_trie.insert(self.__tokenize(kw))
 
@@ -66,6 +51,7 @@ class Job:
                 nodes.pop()
             if nodes:
                 kw: tuple[str] = tuple(job[:len(nodes)])
+                kw = alias_map.get(kw, kw)
                 self.scores[kw] = self.scores.get(kw, 0) + 1
             del job[:max(1, len(nodes))]
 
