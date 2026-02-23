@@ -1,6 +1,6 @@
 [project]
 name = "resusew"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
     "click==8.3.1",
     "iniconfig==2.3.0",
@@ -16,4 +16,7 @@ dependencies = [
 
 [project.scripts]
 resusew = "resusew.cli:main"
+
+[tool.setuptools.package-data]
+resusew = ["static/**"]
 

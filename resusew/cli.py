@@ -1,6 +1,27 @@
 import json
+import os
+from importlib import resources
 from argparse import ArgumentParser
 from resusew import Parser, Job, Resusew
+
+
+def _load_args():
+    parser: ArgumentParser = ArgumentParser()
+    parser.add_argument(
+        "resume",
+        help="your resusew template file")
+    parser.add_argument(
+        "jobdesc",
+        help="job description file")
+    parser.add_argument(
+        "out",
+        help="tailored resume output file")
+    parser.add_argument(
+        "-a",
+        "--alias",
+        help="your keyword alias dict file")
+    return parser.parse_args()
+
 
 def _load_required_file(filename: str) -> str:
     try:
@@ -10,31 +31,33 @@ def _load_required_file(filename: str) -> str:
         print(e)
         exit(1)
 
+
+def _load_static_file(filename: str) -> str:
+    static_dir: str = resources.files("resusew").joinpath("static")
+    return static_dir.joinpath(filename).read_text()
+
+
+def _load_alias(name: str | None) -> dict[str, list[str]]:
+    if name is None:
+        return {}
+
+    alias_presets: set[str] = {"swe"}
+    if name not in alias_presets:
+        return json.loads(_load_required_file(name))
+
+    return json.loads(_load_static_file(os.path.join(
+        "alias", name + ".json")))
+
+
 def main():
-    parser: ArgumentParser = ArgumentParser()
-    parser.add_argument(
-            "resume",
-            help="your resusew template file")
-    parser.add_argument(
-            "jobdesc",
-            help="job description file")
-    parser.add_argument(
-            "out",
-            help="tailored resume output file")
-    parser.add_argument(
-            "-a",
-            "--alias",
-            help="your keyword alias dict file")
-    args = parser.parse_args()
+    args = _load_args()
 
     resume_str: str = _load_required_file(args.resume)
     jobdesc_str: str = _load_required_file(args.jobdesc)
-
-    aliases: dict[str, list[str]] = json.loads(
-            _load_required_file(args.alias)) if args.alias else {}
+    alias: dict[str, list[str]] = _load_alias(args.alias)
 
     resume: Resusew = Parser().parse(resume_str.split('\n'))
-    jobdesc: Job = Job(jobdesc_str, resume.get_keywords(), aliases)
+    jobdesc: Job = Job(jobdesc_str, resume.get_keywords(), alias)
 
     resume.resolve(jobdesc)
     out = '\n'.join(resume.to_plain_str())
