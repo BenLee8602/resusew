@@ -5,13 +5,13 @@ Skills:
 
 Languages:
 Python
-C
+C++
 Java
 Go
 SQL
 JavaScript
 TypeScript
-C++
+C
 C#
 Rust
 
@@ -61,9 +61,9 @@ Junior Software Developer
 Vertex Solutions | Jun 2017 - Apr 2019 | Mississauga, ON
 - Implemented performance-critical components with careful memory management
 - Assisted with database schema design and SQL query optimization
+- Contributed to enterprise desktop applications using C++ and Qt
 - Wrote internal tooling and automation scripts in Python and Bash
 - Documented APIs, build systems, and deployment procedures
-- Contributed to enterprise desktop applications using C++ and Qt
 
 Projects
 

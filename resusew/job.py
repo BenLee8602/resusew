@@ -1,5 +1,6 @@
+import re
+
 import nltk
-from nltk.tokenize import wordpunct_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
@@ -21,6 +22,7 @@ class Job:
     __STOPWORDS: set[str] = set(stopwords.words("english"))
 
     __BAD_TOKENS: set[str] = __PUNCT | __STOPWORDS
+    __TOKENIZER: re.Pattern = re.compile(r"\w+|[^\w\s]", re.UNICODE)
     __LEMMATIZER: WordNetLemmatizer = WordNetLemmatizer()
 
 
@@ -32,18 +34,18 @@ class Job:
         self.itemkw_stack: list[set[str]] = []
         self.scores: dict[tuple[str], int] = {}
 
-        job: list[str] = self.__tokenize(jobdesc)
+        job: list[str] = Job.tokenize(jobdesc)
 
         keyword_trie: TokenTrie = TokenTrie()
         alias_map: dict[tuple[str], tuple[str]] = {}
         for key, val in aliases.items():
-            kt: tuple[str] = tuple(self.__tokenize(key))
+            kt: tuple[str] = tuple(Job.tokenize(key))
             for v in val:
-                vt: list[str] = self.__tokenize(v)
+                vt: list[str] = Job.tokenize(v)
                 keyword_trie.insert(vt)
                 alias_map[tuple(vt)] = kt
         for kw in keywords:
-            keyword_trie.insert(self.__tokenize(kw))
+            keyword_trie.insert(Job.tokenize(kw))
 
         while job:
             nodes: list[TokenTrie] = keyword_trie.nav(job)[1:]
@@ -67,12 +69,13 @@ class Job:
 
 
     def get_kw_score(self, kw: str) -> int:
-        return self.scores.get(tuple(self.__tokenize(kw)), 0)
+        return self.scores.get(tuple(Job.tokenize(kw)), 0)
 
 
-    def __tokenize(self, s: str) -> list[str]:
+    @staticmethod
+    def tokenize(s: str) -> list[str]:
         s = s.lower()
-        tokens: list[str] = wordpunct_tokenize(s)
+        tokens: list[str] = Job.__TOKENIZER.findall(s)
         tokens = [t for t in tokens if t not in Job.__BAD_TOKENS]
         tokens = [Job.__LEMMATIZER.lemmatize(t) for t in tokens]
         return tokens
